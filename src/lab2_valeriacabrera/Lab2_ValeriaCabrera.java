@@ -6,7 +6,9 @@
 package lab2_valeriacabrera;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -150,7 +152,9 @@ public class Lab2_ValeriaCabrera {
                     System.out.println("Ingrese el numero del cargo: ");
                     int car = leer.nextInt();
                     
-                    while(contg>3){
+                    
+                    // validacion ingresar solo 3 gerentes
+                    while(contg>=3 && car==1){
                         System.out.println("Lo siento, ya contamos con 3 gerentes");
                         System.out.println("Cargo");
                         System.out.println("1) gerente");
@@ -164,13 +168,17 @@ public class Lab2_ValeriaCabrera {
                     
                     if(car==1){
                         ((InfodeEmpleados) empleados.get(cont)).setCargo("Gerente");
+                        ((InfodeEmpleados) empleados.get(cont)).setSueldo(50000);
                         contg++;
                     }else if(car==2){
                         ((InfodeEmpleados) empleados.get(cont)).setCargo("Aseador");
+                        ((InfodeEmpleados) empleados.get(cont)).setSueldo(30000);
                     }else if(car==3){
                         ((InfodeEmpleados) empleados.get(cont)).setCargo("Cajero");
+                        ((InfodeEmpleados) empleados.get(cont)).setSueldo(40000);
                     }else if(car==4){
                         ((InfodeEmpleados) empleados.get(cont)).setCargo("Seguridad");
+                        ((InfodeEmpleados) empleados.get(cont)).setSueldo(38000);
                     }
                     
                     cont++;
@@ -181,6 +189,17 @@ public class Lab2_ValeriaCabrera {
                     System.out.println("Ingrese el numero de la posicion del empleado que desea despedir:");
                     int p = leer.nextInt();
                     empleados.remove(p);
+                    
+                    if(contg==0){
+                        System.out.println("Ingrese la posicion del cajero que desea ascender: ");
+                        int e = leer.nextInt();
+                    
+                    if (empleados.get(e-1) instanceof InfodeEmpleados) {
+                        ((InfodeEmpleados) empleados.get(e-1)).setCargo("Gerente");
+                        ((InfodeEmpleados) empleados.get(e-1)).setSueldo(50000);
+                        System.out.println(empleados.get(e-1)+" ");
+                    }
+                    }
                     
                 }
                 break;
@@ -193,22 +212,87 @@ public class Lab2_ValeriaCabrera {
                 break;
                 case 4:{
                     
+                    if(contg<3){
+                    System.out.println("Ingrese la posicion del cajero que desea ascender: ");
+                    int p = leer.nextInt();
                     
+                    if (empleados.get(p-1) instanceof InfodeEmpleados) {
+                        ((InfodeEmpleados) empleados.get(p-1)).setCargo("Gerente");
+                        ((InfodeEmpleados) empleados.get(p-1)).setSueldo(50000);
+                        System.out.println(empleados.get(p-1)+" ");
+                    }
                     
+                }
+                    
+                    else{
+                        System.out.println("Ya están ocupados todos los cargos de Gerente");
+                    }
                 }
                 break;
                 case 5:{
                     
-                    
+                  for (int i = 0; i < empleados.size(); i++) {
+                      
+                      if (((InfodeEmpleados)empleados.get(i)).getSueldo()==50000 ) {
+                          System.out.println(empleados.indexOf(empleados.get(i))+"- "+empleados.get(i));
+                      }
+                      
+                      if (((InfodeEmpleados)empleados.get(i)).getSueldo()==30000 ) {
+                          System.out.println(empleados.indexOf(empleados.get(i))+"- "+empleados.get(i));
+                      }
+                      
+                      if (((InfodeEmpleados)empleados.get(i)).getSueldo()==40000 ) {
+                          System.out.println(empleados.indexOf(empleados.get(i))+"- "+empleados.get(i));
+                      }
+                      
+                      if (((InfodeEmpleados)empleados.get(i)).getSueldo()==38000 ) {
+                          System.out.println(empleados.indexOf(empleados.get(i))+"- "+empleados.get(i));
+                      }
+        }
                     
                 }
                 break;
                 case 6:{
                     
+                    //modificacion
+                    
+                    System.out.println("Ingrese la posicion del empleado que desea modificar: ");
+                    int p = leer.nextInt();
+                    
+                    System.out.println("Modificar: ");
+                    System.out.println("1) Color Favorito");
+                    System.out.println("2) Edad");
+                    System.out.println("3) Altura");
+                    System.out.println("4) Peso");
+                    System.out.println("Ingrese el numero que desea modificar: ");
+                    int mod = leer.nextInt();
+                    
+                    if(mod==1){
+                        System.out.println("Ingrese el nuevo color: ");
+                        String color = leer.next();
+                        ((InfodeEmpleados) empleados.get(p)).setfavColor(color);
+                    }else if(mod==2){
+                        System.out.println("Ingrese la nueva edad: ");
+                        int edad = leer.nextInt();
+                        ((InfodeEmpleados) empleados.get(p)).setEdad(edad);
+                    }else if(mod==3){
+                        System.out.println("Ingrese la nueva altura: ");
+                        float altura = leer.nextFloat();
+                        ((InfodeEmpleados) empleados.get(p)).setAltura(altura);
+                    }else if(mod==4){
+                        System.out.println("Ingrese el nuevo color: ");
+                        float peso = leer.nextFloat();
+                        ((InfodeEmpleados) empleados.get(p)).setPeso(peso);
+                    }
+                    
+                    
+                    
+                    
                     
                 }
                 break;
                 case 7:{
+                    
                     
                     
                 }

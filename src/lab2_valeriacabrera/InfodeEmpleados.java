@@ -23,6 +23,7 @@ public class InfodeEmpleados {
     private float peso;
     private String titulo;
     private String cargo;
+    private int sueldo;
     
     //constructor
     public InfodeEmpleados(String nombre, String apellido){
@@ -82,6 +83,10 @@ public class InfodeEmpleados {
         
     }
     
+    public void setSueldo(int suel){
+        this.sueldo=suel;
+    }
+    
     //getters
     
     public String getApellido(){
@@ -116,8 +121,12 @@ public class InfodeEmpleados {
         return cargo;
     }
     
+    public int getSueldo(){
+        return sueldo;
+    }
+    
     public String toString(){
-        return "Empleado: "+nombre+" "+apellido;
+        return "Empleado: "+nombre+" "+apellido+" -"+cargo;
     }
     
 }
